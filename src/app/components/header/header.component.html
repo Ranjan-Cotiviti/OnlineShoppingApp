@@ -1,0 +1,28 @@
+<div class="bg-white sticky top-0 w-full shadow-md flex justify-between items-center px-5">
+    <div>
+        <a routerLink="/">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTahkq5-kcMdoBqJq8t05i1QjCsfmmh05_hmvwYBOvl&s"
+                alt="Logo" />
+        </a>
+    </div>
+    <div *ngIf="!isAdmin" class="flex gap-10 font-bold font-serif">
+        <div class="flex gap-4">
+            <a routerLink="/">Home</a>
+            <a routerLink="/products">Products</a>
+            <a *ngIf="!isLoggedIn" routerLink="/login">Login</a>
+            <a *ngIf="!isLoggedIn" routerLink="/register">Register</a>
+            <a *ngIf="isLoggedIn" (click)="logout()">Logout</a>
+        </div>
+        <div *ngIf="isLoggedIn">
+            <a routerLink="/cart">
+                <button>Go to cart</button>
+            </a>
+        </div>
+    </div>
+    <div *ngIf="isAdmin" class="flex gap-10 font-bold font-serif">
+        <div class="flex gap-4">
+            <a routerLink="/dashboard">Dashboard</a>
+            <a *ngIf="isLoggedIn" (click)="logout()">Logout</a>
+        </div>
+    </div>
+</div>
